@@ -29,14 +29,13 @@ def get_args_parser(add_help=True):
     parser.add_argument('--data-path', default='./data/bgxray.yaml', type=str, help='path of dataset')
     parser.add_argument('--conf-file', default='./configs/yolov6n_finetune.py', type=str, help='experiments description file')
     parser.add_argument('--epochs', default=300, type=int, help='number of total epochs to run')
-    parser.add_argument('--batch-size', default=48, type=int, help='total batch size for all GPUs')
-    parser.add_argument('--batchsize', default=2, type=int, help='一张GPU上需要的训练样本')
-    parser.add_argument('--height', type=int, default=256, help='image height of model input')
-    parser.add_argument('--width', type=int, default=256, help='image width of model input')
+    parser.add_argument('--batchsize', default=16, type=int, help='一张GPU上需要的训练样本')
+    parser.add_argument('--height', type=int, default=640, help='image height of model input')
+    parser.add_argument('--width', type=int, default=640, help='image width of model input')
     parser.add_argument('--device', default='0,1,2,3,4', type=str, help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
 
     #无需修改的参数
-    parser.add_argument('--img-size', default=9999, type=int, help='train, val image size (pixels)')
+    parser.add_argument('--img-size', default=9999, type=int, help='train, val image size (pixels),该参数已经替换',)
     parser.add_argument('--rect', action='store_true', help='whether to use rectangular training, default is False')
     parser.add_argument('--workers', default=0, type=int, help='number of data loading workers (default: 8)')
     parser.add_argument('--eval-interval', default=1, type=int, help='evaluate at every interval epochs')
@@ -63,6 +62,7 @@ def get_args_parser(add_help=True):
     parser.add_argument('--fuse_ab', default=True, help='fuse ab branch in training process or not')
     parser.add_argument('--bs_per_gpu', default=16, type=int, help='batch size per GPU for auto-rescale learning rate, set to 16 for P6 models')
     parser.add_argument('--specific-shape', default=True, help='rectangular training')
+    parser.add_argument('--batch-size', default=48, type=int, help='total batch size for all GPUs,无用参数已在代码中替换')
 
     return parser
 
@@ -121,6 +121,7 @@ def main(args):
     cfg, device, args = check_and_init(args)
     # reload envs because args was chagned in check_and_init(args)
     args.local_rank, args.rank, args.world_size = get_envs()
+    args.batch_size=args.world_size*args.batchsize
     LOGGER.info(f'training args are: {args}\n')
     if args.local_rank != -1: # if DDP mode
         torch.cuda.set_device(args.local_rank)

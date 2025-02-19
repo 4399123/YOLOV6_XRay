@@ -3,3 +3,4 @@ pt/
 weights/
 .idea/
 train.log
+onnx/

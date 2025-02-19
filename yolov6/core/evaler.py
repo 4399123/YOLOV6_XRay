@@ -76,7 +76,14 @@ class Evaler:
             LOGGER.info("Switch model to deploy modality.")
             LOGGER.info("Model Summary: {}".format(get_model_info(model, self.img_size)))
         if self.device.type != 'cpu':
-            model(torch.zeros(1, 3, self.img_size, self.img_size).to(self.device).type_as(next(model.parameters())))
+
+            if self.specific_shape :
+                model(torch.zeros(1, 3, self.height, self.width).to(self.device).type_as(next(model.parameters())))
+            else:
+                model(torch.zeros(1, 3, self.img_size, self.img_size).to(self.device).type_as(next(model.parameters())))
+
+
+
         model.half() if self.half else model.float()
         return model
 

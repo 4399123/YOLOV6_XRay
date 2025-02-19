@@ -186,6 +186,8 @@ class ONNX_ORT(nn.Module):
         det_boxes, det_scores = batched_dets.split((4, 1), -1)
         det_scores = det_scores.squeeze(-1)
         num_det = (det_scores > 0).sum(1, keepdim=True)
+        num_det=torch.tensor(num_det,dtype=torch.float32)
+        det_classes=torch.tensor(det_classes,dtype=torch.float32)
         return num_det, det_boxes, det_scores, det_classes
 
 class ONNX_TRT7(nn.Module):

@@ -31,9 +31,9 @@ if __name__ == '__main__':
     parser.add_argument('--dynamic-batch', default=True, help='export dynamic batch onnx model')
     parser.add_argument('--end2end', default=True, help='export end2end onnx')
     parser.add_argument('--trt-version', type=int, default=8, help='tensorrt version')
-    parser.add_argument('--ort', default=True, help='export onnx for onnxruntime')
+    parser.add_argument('--ort', default=False, help='export onnx for onnxruntime')
     parser.add_argument('--with-preprocess', default=True, help='export bgr2rgb and normalize')
-    parser.add_argument('--topk-all', type=int, default=32, help='topk objects for every images')
+    parser.add_argument('--topk-all', type=int, default=50, help='topk objects for every images')
     parser.add_argument('--iou-thres', type=float, default=0.65, help='iou threshold for NMS')
     parser.add_argument('--conf-thres', type=float, default=0.5, help='conf threshold for NMS')
     parser.add_argument('--device', default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
@@ -101,10 +101,10 @@ if __name__ == '__main__':
     # ONNX export
     try:
         LOGGER.info('\nStarting to export ONNX...')
-        onnx_path='../../onnx'
-        if not os.path.exists(onnx_path):
-            os.makedirs(onnx_path)
-        export_file = args.weights.replace('weights', 'onnx').replace('.pt', '.onnx')  # filename
+        if not os.path.exists('./onnx'):
+            os.makedirs('./onnx')
+        export_file ='./onnx/best-trt.onnx'
+        # export_file = args.weights.replace('weights', 'onnx').replace('.pt', '.onnx')  # filename
         # export_file = args.weights.replace('.pt', '.onnx')  # filename
         with BytesIO() as f:
             torch.onnx.export(model, img, f, verbose=False, opset_version=13,
