@@ -1,0 +1,246 @@
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (8.82s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (8.43s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (8.39s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (15.46s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.26s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (7.13s)
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (8.12s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (7.03s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.17s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (7.74s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (7.02s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (7.44s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.98s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.21s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.38s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.66s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.59s)
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (6.16s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../onnx/catdog_ckpt2.onnx
+
+Export complete (10.03s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=../../onnx/catdog_ckpt2.onnx --saveEngine=../../onnx/catdog_ckpt2.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ../../weights/catdog_ckpt2.pt
+
+Fusing model...
+Loading checkpoint from ../../pt/bgxray.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ../../pt/bgxray.onnx
+
+Export complete (15.70s)
