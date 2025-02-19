@@ -24,14 +24,21 @@ from yolov6.utils.general import increment_name, find_latest_checkpoint, check_i
 
 def get_args_parser(add_help=True):
     parser = argparse.ArgumentParser(description='YOLOv6 PyTorch Training', add_help=add_help)
+
+    #需修改的参数
     parser.add_argument('--data-path', default='./data/bgxray.yaml', type=str, help='path of dataset')
     parser.add_argument('--conf-file', default='./configs/yolov6n_finetune.py', type=str, help='experiments description file')
-    parser.add_argument('--img-size', default=640, type=int, help='train, val image size (pixels)')
-    parser.add_argument('--rect', action='store_true', help='whether to use rectangular training, default is False')
-    parser.add_argument('--batch-size', default=48, type=int, help='total batch size for all GPUs')
     parser.add_argument('--epochs', default=300, type=int, help='number of total epochs to run')
-    parser.add_argument('--workers', default=0, type=int, help='number of data loading workers (default: 8)')
+    parser.add_argument('--batch-size', default=48, type=int, help='total batch size for all GPUs')
+    parser.add_argument('--batchsize', default=2, type=int, help='一张GPU上需要的训练样本')
+    parser.add_argument('--height', type=int, default=256, help='image height of model input')
+    parser.add_argument('--width', type=int, default=256, help='image width of model input')
     parser.add_argument('--device', default='0,1,2,3,4', type=str, help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+
+    #无需修改的参数
+    parser.add_argument('--img-size', default=9999, type=int, help='train, val image size (pixels)')
+    parser.add_argument('--rect', action='store_true', help='whether to use rectangular training, default is False')
+    parser.add_argument('--workers', default=0, type=int, help='number of data loading workers (default: 8)')
     parser.add_argument('--eval-interval', default=1, type=int, help='evaluate at every interval epochs')
     parser.add_argument('--eval-final-only', action='store_true', help='only evaluate at the final epoch')
     parser.add_argument('--heavy-eval-range', default=10, type=int,
@@ -45,8 +52,8 @@ def get_args_parser(add_help=True):
     parser.add_argument('--local_rank', type=int, default=-1, help='DDP parameter')
     parser.add_argument('--resume', nargs='?', const=True, default=False, help='resume the most recent training')
     parser.add_argument('--write_trainbatch_tb', default=True, help='write train_batch image to tensorboard once an epoch, may slightly slower train speed if open')
-    parser.add_argument('--stop_aug_last_n_epoch', default=20, type=int, help='stop strong aug at last n epoch, neg value not stop, default 15')
-    parser.add_argument('--save_ckpt_on_last_n_epoch', default=2, type=int, help='save last n epoch even not best or last, neg value not save')
+    parser.add_argument('--stop_aug_last_n_epoch', default=15, type=int, help='stop strong aug at last n epoch, neg value not stop, default 15')
+    parser.add_argument('--save_ckpt_on_last_n_epoch', default=5, type=int, help='save last n epoch even not best or last, neg value not save')
     parser.add_argument('--distill', action='store_true', help='distill or not')
     parser.add_argument('--distill_feat', action='store_true', help='distill featmap or not')
     parser.add_argument('--quant', action='store_true', help='quant or not')
@@ -55,12 +62,8 @@ def get_args_parser(add_help=True):
     parser.add_argument('--temperature', type=int, default=20, help='distill temperature')
     parser.add_argument('--fuse_ab', default=True, help='fuse ab branch in training process or not')
     parser.add_argument('--bs_per_gpu', default=16, type=int, help='batch size per GPU for auto-rescale learning rate, set to 16 for P6 models')
-    # parser.add_argument('--specific-shape', action='store_true', help='rectangular training')
-    # parser.add_argument('--height', type=int, default=None, help='image height of model input')
-    # parser.add_argument('--width', type=int, default=None, help='image width of model input')
     parser.add_argument('--specific-shape', default=True, help='rectangular training')
-    parser.add_argument('--height', type=int, default=640, help='image height of model input')
-    parser.add_argument('--width', type=int, default=640, help='image width of model input')
+
     return parser
 
 

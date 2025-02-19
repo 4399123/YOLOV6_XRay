@@ -1,3 +1,5 @@
 runs/
 pt/
 weights/
+.idea/
+train.log
