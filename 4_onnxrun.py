@@ -8,7 +8,7 @@ import cv2
 from tqdm import  tqdm
 from imutils import paths
 #Â·¾¶ÅäÖÃ
-onnx_path=r'./onnx/best.onnx'
+onnx_path=r'./onnx/best-ort.onnx'
 imgspath=r'./onnx/imgs/'
 w,h=640,640
 

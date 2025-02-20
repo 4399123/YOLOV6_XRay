@@ -27,7 +27,7 @@ def get_args_parser(add_help=True):
 
     #需修改的参数
     parser.add_argument('--data-path', default='./data/bgxray.yaml', type=str, help='path of dataset')
-    parser.add_argument('--conf-file', default='./configs/yolov6n_finetune.py', type=str, help='experiments description file')
+    parser.add_argument('--conf-file', default='./configs/yolov6_lite/yolov6_lite_s_finetune.py', type=str, help='experiments description file')
     parser.add_argument('--epochs', default=300, type=int, help='number of total epochs to run')
     parser.add_argument('--batchsize', default=16, type=int, help='一张GPU上需要的训练样本')
     parser.add_argument('--height', type=int, default=640, help='image height of model input')
