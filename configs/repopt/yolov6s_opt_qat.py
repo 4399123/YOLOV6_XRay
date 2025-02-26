@@ -1,8 +1,8 @@
 # YOLOv6s model
 model = dict(
     type='YOLOv6s',
-    pretrained='./assets/yolov6s_v2_reopt_43.1.pt',
-    scales='./assets/yolov6s_v2_scale.pt',
+    pretrained='./yolov6_assert/yolov6s_v2_reopt_43.1.pt',
+    scales='./yolov6_assert/yolov6s_v2_scale.pt',
     depth_multiple=0.33,
     width_multiple=0.50,
     backbone=dict(
@@ -21,6 +21,9 @@ model = dict(
         num_layers=3,
         begin_indices=24,
         anchors=1,
+        anchors_init=[[10, 13, 19, 19, 33, 23],
+                      [30, 61, 59, 59, 59, 119],
+                      [116, 90, 185, 185, 373, 326]],
         out_indices=[17, 20, 23],
         strides=[8, 16, 32],
         atss_warmup_epoch=0,
@@ -89,7 +92,7 @@ ptq = dict(
 )
 
 qat = dict(
-    calib_pt = './assets/yolov6s_v2_reopt_43.1_calib_histogram.pt',
+    calib_pt = './yolov6_assert/yolov6s_v2_reopt_43.1_calib_histogram.pt',
     sensitive_layers_skip = False,
     sensitive_layers_list=['detect.stems.0.conv',
                            'detect.stems.1.conv',

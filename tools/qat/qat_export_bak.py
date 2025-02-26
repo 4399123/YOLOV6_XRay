@@ -54,19 +54,19 @@ def zero_scale_fix(model, device):
 # python3 qat_export.py --weights v6s_n.pt --quant-weights yolov6n_v2_reopt_qat_34.9.pt --export-batch-size 1 --conf ../../configs/repopt/yolov6n_opt_qat.py
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', type=str, default='./yolov6s_v2_reopt.pt', help='weights path')
-    parser.add_argument('--quant-weights', type=str, default='./yolov6s_v2_reopt_qat_43.0.pt', help='calib weights path')
+    parser.add_argument('--weights', type=str, default=r'C:\D\github_zl\YOLOV6_XRay\yolov6_assert\yolov6s_v2_reopt_43.1.pt', help='weights path')
+    parser.add_argument('--quant-weights', type=str, default=r'C:\D\github_zl\YOLOV6_XRay\pt\best_ckpt.pt', help='calib weights path')
     parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='image size')  # height, width
-    parser.add_argument('--conf', type=str, default='../../configs/repopt/yolov6s_opt_qat.py', help='model config')
-    parser.add_argument('--export-batch-size', type=int, default=None, help='export batch size')
+    parser.add_argument('--conf', type=str, default=r'C:\D\github_zl\YOLOV6_XRay\configs\repopt\yolov6s_opt_qat.py', help='model config')
+    parser.add_argument('--export-batch-size', type=int, default=1, help='export batch size')
     parser.add_argument('--calib', action='store_true', default=False, help='calibrated model')
     parser.add_argument('--scale-fix', action='store_true', help='enable scale fix')
     parser.add_argument('--fuse-bn', action='store_true', help='fuse bn')
-    parser.add_argument('--graph-opt', action='store_true', help='enable graph optimizer')
+    parser.add_argument('--graph-opt', default=True, help='enable graph optimizer')
     parser.add_argument('--inplace', action='store_true', help='set Detect() inplace=True')
-    parser.add_argument('--end2end', action='store_true', help='export end2end onnx')
+    parser.add_argument('--end2end', default=True, help='export end2end onnx')
     parser.add_argument('--trt-version', type=int, default=8, help='tensorrt version')
-    parser.add_argument('--with-preprocess', action='store_true', help='export bgr2rgb and normalize')
+    parser.add_argument('--with-preprocess', default=True, help='export bgr2rgb and normalize')
     parser.add_argument('--max-wh', type=int, default=None, help='None for tensorrt nms, int value for onnx-runtime nms')
     parser.add_argument('--topk-all', type=int, default=100, help='topk objects for every images')
     parser.add_argument('--iou-thres', type=float, default=0.45, help='iou threshold for NMS')
@@ -82,7 +82,7 @@ if __name__ == '__main__':
     device = torch.device('cuda:0' if cuda else 'cpu')
     assert not (device.type == 'cpu' and args.half), '--half only compatible with GPU export, i.e. use --device 0'
     model = load_checkpoint(args.weights, map_location=device, inplace=args.inplace, fuse=args.fuse_bn)
-    yolov6_evaler = EvalerWrapper(eval_cfg=load_yaml(args.eval_yaml))
+    # yolov6_evaler = EvalerWrapper(eval_cfg=load_yaml(args.eval_yaml))
     # orig_mAP = yolov6_evaler.eval(model)
     for layer in model.modules():
         if isinstance(layer, RepVGGBlock):
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     print(model)
     model.neck.upsample_enable_quant(cfg.ptq.num_bits, cfg.ptq.calib_method)
     ckpt = torch.load(args.quant_weights)
-    model.load_state_dict(ckpt['model'].float().state_dict())
+    model.load_state_dict(ckpt['model'].float().state_dict(),strict=False)
     print(model)
     model.to(device)
     if args.scale_fix:
@@ -110,8 +110,8 @@ if __name__ == '__main__':
         for sub_fusion_list in op_concat_fusion_list:
             ops = [get_module(model, op_name) for op_name in sub_fusion_list]
             concat_quant_amax_fuse(ops)
-    qat_mAP = yolov6_evaler.eval(model)
-    print(qat_mAP)
+    # qat_mAP = yolov6_evaler.eval(model)
+    # print(qat_mAP)
     if args.end2end:
         from yolov6.models.end2end import End2End
         model = End2End(model, max_obj=args.topk_all, iou_thres=args.iou_thres,score_thres=args.conf_thres,

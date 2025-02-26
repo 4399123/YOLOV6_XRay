@@ -2,7 +2,7 @@
 model = dict(
     type='YOLOv6s',
     pretrained=None,
-    scales='../yolov6_assert/v6s_v2_scale.pt',
+    scales='./yolov6_assert/v6s_v2_scale.pt',
     depth_multiple=0.33,
     width_multiple=0.50,
     backbone=dict(
@@ -31,10 +31,10 @@ model = dict(
 )
 
 solver = dict(
-    optim='SGD',
+    optim='AdamW',
     lr_scheduler='Cosine',
-    lr0=0.01,
-    lrf=0.01,
+    lr0=0.001,
+    lrf=0.011,
     momentum=0.937,
     weight_decay=0.0005,
     warmup_epochs=3.0,
