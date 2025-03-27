@@ -27,12 +27,12 @@ def get_args_parser(add_help=True):
 
     #需修改的参数
     parser.add_argument('--data-path', default='./data/bgxray.yaml', type=str, help='path of dataset')
-    parser.add_argument('--conf-file', default='./configs/repopt/yolov6s_opt.py', type=str, help='experiments description file')
-    parser.add_argument('--epochs', default=100, type=int, help='number of total epochs to run')
+    parser.add_argument('--conf-file', default='./configs/yolov6_lite/yolov6_lite_s_finetune.py', type=str, help='experiments description file')
+    parser.add_argument('--epochs', default=300, type=int, help='number of total epochs to run')
     parser.add_argument('--batchsize', default=32, type=int, help='一张GPU上需要的训练样本')
     parser.add_argument('--height', type=int, default=640, help='image height of model input')
     parser.add_argument('--width', type=int, default=640, help='image width of model input')
-    parser.add_argument('--device', default='1,2,3,4', type=str, help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+    parser.add_argument('--device', default='0,1,2,3,4', type=str, help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
 
     #无需修改的参数
     parser.add_argument('--img-size', default=9999, type=int, help='train, val image size (pixels),该参数已经替换',)

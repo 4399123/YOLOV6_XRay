@@ -33,7 +33,7 @@ if __name__ == '__main__':
     parser.add_argument('--trt-version', type=int, default=8, help='tensorrt version')
     parser.add_argument('--ort', default=False, help='export onnx for onnxruntime')
     parser.add_argument('--with-preprocess', default=True, help='export bgr2rgb and normalize')
-    parser.add_argument('--topk-all', type=int, default=50, help='topk objects for every images')
+    parser.add_argument('--topk-all', type=int, default=80, help='topk objects for every images')
     parser.add_argument('--iou-thres', type=float, default=0.65, help='iou threshold for NMS')
     parser.add_argument('--conf-thres', type=float, default=0.5, help='conf threshold for NMS')
     parser.add_argument('--device', default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
