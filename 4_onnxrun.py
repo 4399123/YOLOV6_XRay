@@ -9,7 +9,7 @@ from tqdm import  tqdm
 from imutils import paths
 #¬∑æ∂≈‰÷√
 onnx_path=r'./onnx/best-ort.onnx'
-imgspath=r'./onnx/imgs/'
+imgspath=r'./onnx/imgs1/'
 w,h=640,640
 
 if not os.path.exists('./onnx/results'):
@@ -64,7 +64,7 @@ for pic_path in tqdm(imgpaths):
         y2 = int(h_ratio * y2)
 
         cv2.rectangle(imgbak,(x1,y1),(x2,y2),palette[int(id)],3)
-        cv2.putText(imgbak, '{}:{:.2f}'.format(label[int(id)], float(score)), (x1, y1 - 5),
+        cv2.putText(imgbak, '{}:{:.6f}'.format(label[int(id)], float(score)), (x1, y1 - 5),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, palette[int(id)], 1)
     cv2.imwrite(os.path.join('./onnx/results',basename), imgbak)
 
