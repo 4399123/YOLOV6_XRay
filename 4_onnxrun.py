@@ -27,8 +27,8 @@ palette={0:(0,255,0),
 
 # label={0:'cat',
 #        1:'dog',
-#        2:'elephant',
-#        3:'bird'}
+#        2:'eagle',
+#        3:'elephant'}
 label={0:'BOX'}
 
 
