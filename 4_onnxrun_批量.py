@@ -10,7 +10,7 @@ from imutils import paths
 #¬∑æ∂≈‰÷√
 onnx_path=r'./onnx/best-ort.onnx'
 imgspath=r'./onnx/imgs1/'
-w,h=640,640
+w,h=448,448
 
 if not os.path.exists('./onnx/results'):
     os.makedirs('./onnx/results')
@@ -41,6 +41,17 @@ session = ort.InferenceSession(onnx_path,providers=['CPUExecutionProvider'])
 
 img_bs=[]
 
+# for pic_path in tqdm(imgpaths):
+#     basename=os.path.basename(pic_path)
+#     img=cv2.imread(pic_path)
+#     H,W=img.shape[0],img.shape[1]
+#     h_ratio=H/h
+#     w_ratio=W/w
+#     imgbak=img.copy()
+#     img=cv2.resize(img,(w,h)).astype(np.float32)
+#     img=np.transpose(img,(2,0,1))
+#     img_bs.append(img)
+
 for pic_path in tqdm(imgpaths):
     basename=os.path.basename(pic_path)
     img=cv2.imread(pic_path)
@@ -48,7 +59,7 @@ for pic_path in tqdm(imgpaths):
     h_ratio=H/h
     w_ratio=W/w
     imgbak=img.copy()
-    img=cv2.resize(img,(w,h)).astype(np.float32)
+    img=cv2.resize(img,(w,h))
     img=np.transpose(img,(2,0,1))
     img_bs.append(img)
 

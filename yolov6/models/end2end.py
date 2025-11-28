@@ -274,7 +274,9 @@ class End2End(nn.Module):
         self.end2end.eval()
 
     def forward(self, x):
+
         if self.with_preprocess:
+            x = x.float()
             x = x[:,[2,1,0],...]
             x = x * (1/255)
         x = self.model(x)

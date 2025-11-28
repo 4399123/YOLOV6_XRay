@@ -22,7 +22,7 @@ from io import BytesIO
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', type=str, default='./pt/bgxray.pt', help='weights path')
+    parser.add_argument('--weights', type=str, default='./pt/v11/yolov6-s.pt', help='weights path')
     parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='image size, the order is: height width')  # height, width
     parser.add_argument('--batch-size', type=int, default=1, help='batch size')
     parser.add_argument('--half', action='store_true', help='FP16 half-precision export')
@@ -33,9 +33,9 @@ if __name__ == '__main__':
     parser.add_argument('--trt-version', type=int, default=8, help='tensorrt version')
     parser.add_argument('--ort', default=True, help='export onnx for onnxruntime')
     parser.add_argument('--with-preprocess', default=True, help='export bgr2rgb and normalize')
-    parser.add_argument('--topk-all', type=int, default=50, help='topk objects for every images')
-    parser.add_argument('--iou-thres', type=float, default=0.45, help='iou threshold for NMS')
-    parser.add_argument('--conf-thres', type=float, default=0.25, help='conf threshold for NMS')
+    parser.add_argument('--topk-all', type=int, default=150, help='topk objects for every images')
+    parser.add_argument('--iou-thres', type=float, default=0.35, help='iou threshold for NMS')
+    parser.add_argument('--conf-thres', type=float, default=0.5, help='conf threshold for NMS')
     parser.add_argument('--device', default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     args = parser.parse_args()
     args.img_size *= 2 if len(args.img_size) == 1 else 1  # expand
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         elif isinstance(layer, nn.Upsample) and not hasattr(layer, 'recompute_scale_factor'):
             layer.recompute_scale_factor = None  # torch 1.11.0 compatibility
     # Input
-    img = torch.zeros(args.batch_size, 3, *args.img_size).to(device)  # image size(1,3,320,192) iDetection
+    img = torch.zeros(args.batch_size, 3, *args.img_size).to(device) # image size(1,3,320,192) iDetection
 
     # Update model
     if args.half:
@@ -106,6 +106,8 @@ if __name__ == '__main__':
         export_file ='./onnx/best-ort.onnx'
         # export_file = args.weights.replace('weights', 'onnx').replace('.pt', '.onnx')  # filename
         # export_file = args.weights.replace('.pt', '.onnx')  # filename
+        img = img.to(torch.uint8)
+
         with BytesIO() as f:
             torch.onnx.export(model, img, f, verbose=False, opset_version=13,
                               training=torch.onnx.TrainingMode.EVAL,

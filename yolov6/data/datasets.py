@@ -223,19 +223,19 @@ class TrainValDataset(Dataset):
         else:
             ratio = self.img_size / max(h0, w0)
 
-        # if ratio != 1:
-        #         im = cv2.resize(
-        #             im,
-        #             (int(w0 * ratio), int(h0 * ratio)),
-        #             interpolation=cv2.INTER_AREA
-        #             if ratio < 1 and not self.augment
-        #             else cv2.INTER_LINEAR,
-        #         )
         if ratio != 1:
                 im = cv2.resize(
                     im,
-                    (self.target_width, self.target_height),
-                    interpolation=cv2.INTER_LINEAR)
+                    (int(w0 * ratio), int(h0 * ratio)),
+                    interpolation=cv2.INTER_AREA
+                    if ratio < 1 and not self.augment
+                    else cv2.INTER_LINEAR,
+                )
+        # if ratio != 1:
+        #         im = cv2.resize(
+        #             im,
+        #             (self.target_width, self.target_height),
+        #             interpolation=cv2.INTER_LINEAR)
         return im, (h0, w0), im.shape[:2]
 
     @staticmethod

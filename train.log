@@ -1,0 +1,220 @@
+Loading checkpoint from ./pt/v10/best_ckpt.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (22.59s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/best_ckpt.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-ort.onnx
+
+Export complete (12.68s)
+Loading checkpoint from ./pt/v11/best_ckpt.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (7.75s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/best_ckpt.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-ort.onnx
+
+Export complete (11.21s)
+Loading checkpoint from ./pt/v11/best_ckpt.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (8.18s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/best_ckpt.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-ort.onnx
+
+Export complete (12.81s)
+Loading checkpoint from ./pt/v11/yolov6-m.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+Loading checkpoint from ./pt/v11/yolov6-m.pt
+
+Fusing model...
+
+Starting to export ONNX...
+ONNX export success, saved as ./onnx/best-ort.onnx
+
+Export complete (27.39s)
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (22.73s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/yolov6-l.pt
+Loading checkpoint from ./pt/v11/yolov6-l.pt
+
+Fusing model...
+Loading checkpoint from ./pt/v11/yolov6-l.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (36.01s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+ONNX export success, saved as ./onnx/best-ort.onnx
+
+Export complete (35.19s)
+Loading checkpoint from ./pt/v11/yolov6-s.pt
+
+Fusing model...
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (15.65s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+ONNX export success, saved as ./onnx/best-ort.onnx
+
+Export complete (16.29s)
+Loading checkpoint from ./pt/v11/yolov6-s.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (13.32s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/yolov6-m.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (20.97s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/yolov6-s.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (12.58s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/v11/yolov6-l.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (34.34s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640

@@ -39,11 +39,22 @@ model = dict(
     )
 )
 
+# solver = dict(
+#     optim='SGD',
+#     lr_scheduler='Cosine',
+#     lr0=0.0003,
+#     lrf=0.000095,
+#     momentum=0.843,
+#     weight_decay=0.00036,
+#     warmup_epochs=2.0,
+#     warmup_momentum=0.5,
+#     warmup_bias_lr=0.05
+# )
 solver = dict(
-    optim='SGD',
+    optim='Adam',
     lr_scheduler='Cosine',
-    lr0=0.0003,
-    lrf=0.000095,
+    lr0=0.003,
+    lrf=0.001,
     momentum=0.843,
     weight_decay=0.00036,
     warmup_epochs=2.0,
@@ -55,12 +66,28 @@ data_aug = dict(
     hsv_h=0.0138,
     hsv_s=0.664,
     hsv_v=0.464,
-    degrees=0.373,
-    translate=0.245,
-    scale=0.898,
-    shear=0.602,
-    flipud=0.00856,
-    fliplr=0.5,
-    mosaic=1.0,
-    mixup=0.243,
+    degrees=5,
+    translate=0.15,
+    scale=0.2,
+    shear=0.1,
+    flipud=0.05,
+    # flipud=0.4,
+    fliplr=0.3,
+    # mosaic=1.0,
+    mosaic=0.5,
+    mixup=0.1,
 )
+
+# data_aug = dict(
+#     hsv_h=0.0138,
+#     hsv_s=0.664,
+#     hsv_v=0.464,
+#     degrees=0.373,
+#     translate=0.245,
+#     scale=0.898,
+#     shear=0.602,
+#     flipud=0.00856,
+#     fliplr=0.5,
+#     mosaic=1.0,
+#     mixup=0.243,
+# )

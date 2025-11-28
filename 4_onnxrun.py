@@ -9,7 +9,8 @@ from tqdm import  tqdm
 from imutils import paths
 #路径配置
 onnx_path=r'./onnx/best-ort.onnx'
-imgspath=r'./onnx/imgs1/'
+imgspath=r'C:\D\github_zl\YOLOV11_ZL\images\baofeng'
+# imgspath=r'./onnx/imgs'
 w,h=640,640
 
 if not os.path.exists('./onnx/results'):
@@ -29,7 +30,8 @@ palette={0:(0,255,0),
 #        1:'dog',
 #        2:'eagle',
 #        3:'elephant'}
-label={0:'BOX'}
+label={0:'TuAn',
+       1:'LV'}
 
 
 imgpaths=list(paths.list_images(imgspath))
@@ -37,16 +39,18 @@ imgpaths=list(paths.list_images(imgspath))
 #onnx模型载入
 model = onnx.load(onnx_path)
 onnx.checker.check_model(model)
-session = ort.InferenceSession(onnx_path,providers=['CPUExecutionProvider'])
+session = ort.InferenceSession(onnx_path,providers=['CUDAExecutionProvider'])
 
 for pic_path in tqdm(imgpaths):
     basename=os.path.basename(pic_path)
+    name=basename.split('.')[0]
     img=cv2.imread(pic_path)
     H,W=img.shape[0],img.shape[1]
     h_ratio=H/h
     w_ratio=W/w
     imgbak=img.copy()
-    img=cv2.resize(img,(w,h)).astype(np.float32)
+    # img=cv2.resize(img,(w,h)).astype(np.float32)
+    img = cv2.resize(img, (w, h))
     img=np.array([np.transpose(img,(2,0,1))])
 
 
@@ -63,10 +67,10 @@ for pic_path in tqdm(imgpaths):
         y1 = int(h_ratio * y1)
         y2 = int(h_ratio * y2)
 
-        cv2.rectangle(imgbak,(x1,y1),(x2,y2),palette[int(id)],3)
+        cv2.rectangle(imgbak,(x1,y1),(x2,y2),palette[int(id)],4)
         cv2.putText(imgbak, '{}:{:.6f}'.format(label[int(id)], float(score)), (x1, y1 - 5),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, palette[int(id)], 1)
-    cv2.imwrite(os.path.join('./onnx/results',basename), imgbak)
+                    cv2.FONT_HERSHEY_SIMPLEX, 2, palette[int(id)], 2)
+    cv2.imwrite(os.path.join('./onnx/results',name+'.jpg'), imgbak)
 
 
 
