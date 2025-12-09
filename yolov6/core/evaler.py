@@ -264,6 +264,9 @@ class Evaler:
                 json.dump(pred_results, f)
 
             anno = COCO(anno_json)
+            if not 'info' in anno.dataset:
+                anno.dataset[
+                    'info'] = {'description': 'custom dataset', 'version': '1.0', 'year': 2024}
             pred = anno.loadRes(pred_json)
             cocoEval = COCOeval(anno, pred, 'bbox')
             if self.is_coco:
