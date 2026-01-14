@@ -218,3 +218,19 @@ We set min/opt/max = 1/16/32 default!
 You can export tensorrt engine use trtexec tools.
 Command is:
 trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
+Loading checkpoint from ./pt/bgxray.pt
+
+Fusing model...
+
+Starting to export ONNX...
+
+Starting to simplify ONNX...
+ONNX export success, saved as ./onnx/best-trt.onnx
+
+Export complete (7.78s)
+Dynamic batch export should define min/opt/max batchsize
+We set min/opt/max = 1/16/32 default!
+
+You can export tensorrt engine use trtexec tools.
+Command is:
+trtexec --onnx=./onnx/best-trt.onnx --saveEngine=./onnx/best-trt.engine --minShapes=images:1x3x640x640 --optShapes=images:16x3x640x640 --maxShapes=images:32x3x640x640 --shapes=images:16x3x640x640
